@@ -28,7 +28,7 @@ Bundle 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
 " ...
 
-filetype plugin indent on     " required
+"filetype plugin indent on     " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -46,17 +46,17 @@ Bundle 'bling/vim-airline'
 Bundle 'flazz/vim-colorschemes'
 colorscheme Monokai
 """"""""
-if has('autocmd')
-    filetype plugin indent on
-endif
+"if has('autocmd')
+"    filetype plugin indent on
+"endif
 if has('syntax') && !exists('g:syntax_on')
     syntax enable
 endif
 
-set autoindent
+"set autoindent
 set ruler
 "set encoding=utf-8
-set tabstop=2 shiftwidth=2 expandtab
+"set tabstop=2 shiftwidth=2 expandtab
 set listchars=tab:▒░,trail:▓
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1

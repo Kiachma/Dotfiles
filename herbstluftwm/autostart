@@ -17,7 +17,7 @@ xsetroot -solid '#5A8E3A'
 hc keyunbind --all
 
 # keybindings
-Mod=Mod4
+Mod=Alt
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close_or_remove 
@@ -123,10 +123,10 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off
 hc rule class=feh manage=off
 
 # Set wallpaper
-feh --bg-scale /home/eaura/Pictures/Backgrounds/Arch.jpg
+feh --bg-scale /home/eaura/Pictures/wallpaper.jpg
 
 # Touchpad off
-synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
+#synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
 
 # unlock, just to be sure
 hc unlock
