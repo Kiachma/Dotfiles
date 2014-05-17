@@ -108,7 +108,7 @@ hc set frame_gap 0
 hc set window_gap 1
 hc set frame_padding 0
 hc set smart_window_surroundings 0
-hc set smart_frame_surroundings 11
+hc set smart_frame_surroundings 1
 hc set mouse_recenter_gap 0
 
 # transparency is needed for useless gaps
@@ -123,7 +123,7 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off
 hc rule class=feh manage=off
 
 # Set wallpaper
-feh --bg-scale /home/eaura/Pictures/wallpaper.jpg
+feh --bg-scale /home/eaura/Google\ Drive/wallpaper.jpg 
 
 # Touchpad off
 #synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
