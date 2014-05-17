@@ -28,13 +28,18 @@ function get_mpd_song() {
         echo -n ""
     fi
 }
+function RAM_usage() {
+    free=$(grep MemFree /proc/meminfo | awk '{print $2}')
+    let freeMB=free/1000
+    echo " $freeMB MB "
+}
 function nextEvent(){
     EVENT=$(gcalcli --military --nostarted --nocolor --cal Emil --cal Pemp --cal Skola --cal 2014 --locale sv_FI.utf8  agenda | sed -n '2p' |sed 's/[ \t]*$//')
     echo "$EVENT "
 }
 function wifiStatus(){
-    QUAL=$(iwconfig wlp3s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}')
-    MAX=$(iwconfig wlp3s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $4}')
+    QUAL=$(iwconfig wlp1s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}')
+    MAX=$(iwconfig wlp1s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $4}')
     PERC=$(echo $QUAL*100/$MAX | bc)
     icon=""
     if ((0<=$PERC && $PERC<=20))
@@ -80,46 +85,46 @@ function Battery() {
         icon=""
     fi
 
-    bar=""
-    case $BAT in
-        100)
-            bar=""
-            ;;
-        [0-5])
-            bar="\f2—————————"
-            ;;
-        [5-9])
-            bar="\f3—\f2————————"
-            ;;
-        [1-2]*)
-            bar="——\f2———————"
-            ;;
-        3*)
-            bar="———\f2——————"
-            ;;
-        4*)
-            bar="————\f2—————"
-            ;;
-        5*)
-            bar="—————\f2————"
-            ;;
-        6*)
-            bar="——————\f2———"
-            ;;
-        7*)
-            bar="———————\f2——"
-            ;;
-        8*)
-            bar="————————\f2—"
-            ;;
-        *)
-            bar="—————————"
-            ;;
-    esac
+    # bar=""
+    # case $BAT in
+    #     100)
+    #         bar=""
+    #         ;;
+    #     [0-5])
+    #         bar="\f2—————————"
+    #         ;;
+    #     [5-9])
+    #         bar="\f3—\f2————————"
+    #         ;;
+    #     [1-2]*)
+    #         bar="——\f2———————"
+    #         ;;
+    #     3*)
+    #         bar="———\f2——————"
+    #         ;;
+    #     4*)
+    #         bar="————\f2—————"
+    #         ;;
+    #     5*)
+    #         bar="—————\f2————"
+    #         ;;
+    #     6*)
+    #         bar="——————\f2———"
+    #         ;;
+    #     7*)
+    #         bar="———————\f2——"
+    #         ;;
+    #     8*)
+    #         bar="————————\f2—"
+    #         ;;
+    #     *)
+    #         bar="—————————"
+    #         ;;
+    # esac
 
     # Create Bar
-
-    echo "$icon \f9$bar"
+    REMAINING=$(acpi -b | awk '{gsub(/%,/,""); print $5}' |cut -c 1-5 )
+    echo " $icon $REMAINING "
 
 }
 
@@ -204,7 +209,8 @@ herbstclient pad $monitor 25
 
         # align right
         echo -n "\r\ur\fr\br"
-        echo  -n " $separator $thermstatus"   # ♨
+        echo  -n " $separator $RAM"   
+        echo  -n " $separator $thermstatus"   
         echo  -n " $separator $batstatus"     # ⚡
         echo  -n " $separator $wifi_str"
         # echo -n "$(Battery)$separator "
@@ -244,6 +250,7 @@ herbstclient pad $monitor 25
             tick)
                 thermstatus="$(termStatus)"
                 wifi_str="$(wifiStatus)"
+                RAM="$(RAM_usage)"
                 ;;
         esac
     done

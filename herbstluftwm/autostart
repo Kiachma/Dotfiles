@@ -105,7 +105,7 @@ hc set always_show_frame 1
 hc set frame_gap 0
 
 # add overlapping window borders
-hc set window_gap 0
+hc set window_gap 1
 hc set frame_padding 0
 hc set smart_window_surroundings 0
 hc set smart_frame_surroundings 11
