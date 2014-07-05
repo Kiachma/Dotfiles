@@ -136,10 +136,12 @@ redshift &
 herbstclient set tree_style '╾│ ├└╼─┐'
 
 # do multi monitor setup here, e.g.:
+
 #hc set_monitors 1366x768+0+0 1920x1080+1366+0
-# or hc:
-#hc detect_monitors
-#
+#hc set_monitors 1920x1200+0+0 1600x900+0+1200
+# or simply:
+hc detect_monitors
+
 # find the panel
 panel=~/.config/herbstluftwm/panel.sh
 [ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
