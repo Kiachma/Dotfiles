@@ -83,6 +83,8 @@ plugins=(colorize,git,archlinux,django,git-flow,github)
 source $ZSH/oh-my-zsh.sh
 
 export CHROME_BIN=/usr/bin/chromium
-export BROWSER=chromium
+export BROWSER=firefox
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
+export EDITOR=vim
 # Customize to your needs...
-export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/bin:/usr/bin:/home/eaura/.gem/ruby/2.0.0/bin/:/home/eaura/.bin/
+export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/bin:/usr/bin:/home/eaura/.gem/ruby/2.0.0/bin/:/home/eaura/.bin/:/home/eaura/.gem/ruby/2.1.0/bin/

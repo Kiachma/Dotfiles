@@ -11,23 +11,10 @@ call vundle#rc()
 " let Vundle manage Vundle, required
 Bundle 'gmarik/vundle'
 
-" The following are examples of different formats supported.
-" Keep bundle commands between here and filetype plugin indent on.
-" scripts on GitHub repos
 Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'tpope/vim-rails.git'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-" scripts from http://vim-scripts.org/vim/scripts.html
 Bundle 'L9'
 Bundle 'FuzzyFinder'
-" scripts not on GitHub
-Bundle 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" ...
-
+Bundle 'airblade/vim-gitgutter'
 "filetype plugin indent on     " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -58,13 +45,12 @@ set ruler
 "set encoding=utf-8
 "set tabstop=2 shiftwidth=2 expandtab
 set listchars=tab:▒░,trail:▓
-" vim-airline
+"vim-airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-
+set laststatus=2
 " Tabs
- let g:airline_theme='badwolf'
- let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='badwolf'
 nnoremap th  :tabfirst<CR>
 nnoremap tj  :tabnext<CR>
 nnoremap tk  :tabprev<CR>

@@ -24,12 +24,13 @@ hc keybind $Mod-Shift-c close_or_remove
 hc keybind $Mod-Return spawn termite
 
 
-hc keybind $Mod-q spawn chromium
-hc keybind $Mod-t spawn geary
+hc keybind $Mod-q spawn firefox
+hc keybind $Mod-t spawn chromium --app="https://mail.google.com"
 hc keybind $Mod-p spawn dmenu-launch
 hc keybind $Mod-s spawn subl
 hc keybind $Mod-d spawn thunar
 hc keybind $Mod-v spawn slock
+hc keybind $Mod-w spawn chromium --app="https://www.google.com/calendar/"
 hc keybind $Mod-Control-f floating toggle
 hc keybind $Mod-e spawn spotify &
 
@@ -92,11 +93,11 @@ hc keybind $Mod-Shift-l shift right
 
 # look
 
-hc set frame_border_active_color '#222222'
+hc set frame_border_active_color '#ff00a0'
 hc set frame_border_normal_color '#101010'
 hc set frame_bg_normal_color '#dddddd'
 hc set frame_bg_active_color '#ccff00'
-hc set frame_border_width 0
+hc set frame_border_width 1
 hc set window_border_width 1
 hc set window_border_inner_width 0
 hc set window_border_normal_color '#1c1c1c'
@@ -135,10 +136,10 @@ redshift &
 herbstclient set tree_style '╾│ ├└╼─┐'
 
 # do multi monitor setup here, e.g.:
-#hc set_monitors 1600x900+0+0  1920x1200+1600+0
-# or simply:
+#hc set_monitors 1366x768+0+0 1920x1080+1366+0
+# or hc:
 #hc detect_monitors
-
+#
 # find the panel
 panel=~/.config/herbstluftwm/panel.sh
 [ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
