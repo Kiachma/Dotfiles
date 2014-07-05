@@ -34,7 +34,7 @@ function RAM_usage() {
     echo " $freeMB MB "
 }
 function nextEvent(){
-    EVENT=$(gcalcli --military --nostarted --nocolor --cal Emil --cal Pemp --cal Skola --cal 2014 --locale sv_FI.utf8  agenda | sed -n '2p' |sed 's/[ \t]*$//')
+    EVENT=$(gcalcli  --military --nostarted --nocolor --cal Emil --cal Pemp --cal Skola --cal 2014 --locale sv_FI.utf8  agenda | sed -n '2p' |sed 's/[ \t]*$//')
     echo "$EVENT "
 }
 function wifiStatus(){
@@ -131,7 +131,7 @@ function Battery() {
 
 monitor=${1:-0}
 
-separator="\f0  |  \fr"
+separator="%{F#FFcee318}  |  %{F-}"
 song=$(get_mpd_song)
 
 herbstclient pad $monitor 25
@@ -173,31 +173,29 @@ herbstclient pad $monitor 25
     visible=true
 
     while true ; do
-        echo -n "\c"
+        echo -n "%{c}"
         for i in "${TAGS[@]}" ; do
             case ${i:0:1} in
                 '#') # current tag
-                    echo -n "\u0\fr"
+                    echo -n "%{F#FFf3f3f3}"
                     ;;
                 '+') # active on other monitor
-                    echo -n "\u3\fr"
+                    echo -n "%{F#FFcee318}"
                     ;;
                 ':')
-                    echo -n "\ur\fr"
+                    echo -n "%{F#FFcee318}"
                     ;;
                 '!') # urgent tag
-                    echo -n "\u1\f1"
+                    echo -n "%{Fred}"
                     ;;
                 *)
-                    echo -n "\ur\f2"
+                    echo -n "%{F#FFaaaaaa}"
                     ;;
             esac
             echo -n "   ${i:1}   " | tr '[:lower:]' '[:upper:]'
         done
         # align left
-        echo -n "\r\ur\fr\br"
-        echo -n "\l"
-        
+        echo -n "%{l}"
         # display song and separator only if something's playing
         if [ "$song" == "" ]; then
             echo -n "$next_event"
@@ -208,7 +206,7 @@ herbstclient pad $monitor 25
         echo -n "$separator"
 
         # align right
-        echo -n "\r\ur\fr\br"
+        echo -n "%{r]"
         echo  -n " $separator $RAM"   
         echo  -n " $separator $thermstatus"   
         echo  -n " $separator $batstatus"     # ⚡
@@ -217,7 +215,7 @@ herbstclient pad $monitor 25
         # echo -n $(iwgetid | sed -n -e 's/^.*ESSID://p' | tr -d '"' )
         echo -n "$separator"
         echo -n "$date_day" | tr '[:lower:]' '[:upper:]'
-        echo -n " \f2"
+        echo -n "%{F#FFaaaaaa}"
         echo -n "$date_min  " | tr '[:lower:]' '[:upper:]'
         echo
      
@@ -254,4 +252,4 @@ herbstclient pad $monitor 25
                 ;;
         esac
     done
-} 2> /dev/null | bar $1
+} 2> /dev/null | bar -g x25++ -u 1 -f -*-roboto-bold-r-*-*-12-*-*-*-*-*-iso8859-9,-*-stlarch-*-*-*-*-*-*-*-*-*-*-*-* $1

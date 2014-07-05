@@ -17,7 +17,7 @@ xsetroot -solid '#5A8E3A'
 hc keyunbind --all
 
 # keybindings
-Mod=Alt
+Mod=Mod4
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close_or_remove 
@@ -135,9 +135,9 @@ redshift &
 herbstclient set tree_style '╾│ ├└╼─┐'
 
 # do multi monitor setup here, e.g.:
-#hc set_monitors 1600x900+0+0  1920x1200+1600+0
+#hc set_monitors 1920x1200+0+0 1600x900+0+1200
 # or simply:
-#hc detect_monitors
+hc detect_monitors
 
 # find the panel
 panel=~/.config/herbstluftwm/panel.sh
