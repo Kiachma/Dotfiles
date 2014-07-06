@@ -15,7 +15,7 @@ function termStatus(){
     t='/sys/class/thermal/thermal_zone0'
     curr=$(cat $t/temp)
     degrees=$(printf '%d / 1000\n' $curr | bc)
-    echo "  $degrees °C"
+    echo " $degrees °C"
 }
 
 function get_mpd_song() {
@@ -31,11 +31,11 @@ function get_mpd_song() {
 function RAM_usage() {
     free=$(grep MemFree /proc/meminfo | awk '{print $2}')
     let freeMB=free/1000
-    echo " $freeMB MB "
+    echo "$freeMB MB"
 }
 function nextEvent(){
     EVENT=$(gcalcli  --military --nostarted --nocolor --cal Emil --cal Pemp --cal Skola --cal 2014 --locale sv_FI.utf8  agenda | sed -n '2p' |sed 's/[ \t]*$//')
-    echo "$EVENT "
+    echo "$EVENT"
 }
 function wifiStatus(){
     QUAL=$(iwconfig wlp3s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}')
@@ -58,7 +58,7 @@ function wifiStatus(){
         then
         icon=""
     else
-        icon="$PERC "
+        icon="$PERC"
     fi 
     echo $icon
 }
@@ -124,14 +124,14 @@ function Battery() {
 
     # Create Bar
     REMAINING=$(acpi -b | awk '{gsub(/%,/,""); print $5}' |cut -c 1-5 )
-    echo " $icon $REMAINING "
+    echo "$icon $REMAINING"
 
 }
 
 
 monitor=${1:-0}
 
-separator="%{F#FFcee318}  |  %{F-}"
+separator="%{F#FFcee318} | %{F-}"
 song=$(get_mpd_song)
 
 herbstclient pad $monitor 25
@@ -192,7 +192,7 @@ herbstclient pad $monitor 25
                     echo -n "%{-u}%{F#FFaaaaaa}"
                     ;;
             esac
-            echo -n "   ${i:1}   " | tr '[:lower:]' '[:upper:]'
+            echo -n "  ${i:1}  " | tr '[:lower:]' '[:upper:]'
         done
         # align left
         echo -n "%{l}"
