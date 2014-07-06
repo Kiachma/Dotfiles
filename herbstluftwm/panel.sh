@@ -252,4 +252,4 @@ herbstclient pad $monitor 25
                 ;;
         esac
     done
-} 2> /dev/null | bar -g x25++ -u 1 -f -*-roboto-bold-r-*-*-12-*-*-*-*-*-iso8859-9,-*-stlarch-*-*-*-*-*-*-*-*-*-*-*-* $1
+} 2> /dev/null | bar -g x25++ -u 1 -f -*-terminus-bold-r-*-*-12-*-*-*-*-*-*-*,-*-stlarch-*-*-*-*-*-*-*-*-*-*-*-* $1
