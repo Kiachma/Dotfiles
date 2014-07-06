@@ -38,8 +38,8 @@ function nextEvent(){
     echo "$EVENT "
 }
 function wifiStatus(){
-    QUAL=$(iwconfig wlp1s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}')
-    MAX=$(iwconfig wlp1s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $4}')
+    QUAL=$(iwconfig wlp3s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}')
+    MAX=$(iwconfig wlp3s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $4}')
     PERC=$(echo $QUAL*100/$MAX | bc)
     icon=""
     if ((0<=$PERC && $PERC<=20))
@@ -173,23 +173,23 @@ herbstclient pad $monitor 25
     visible=true
 
     while true ; do
-        echo -n "%{c}"
+        echo -n "%{U#FFcee318}%{c}"
         for i in "${TAGS[@]}" ; do
             case ${i:0:1} in
                 '#') # current tag
-                    echo -n "%{F#FFf3f3f3}"
+                    echo -n "%{+u}%{F#FFf3f3f3}"
                     ;;
                 '+') # active on other monitor
-                    echo -n "%{F#FFcee318}"
+                    echo -n "%{-u}%{F#FFcee318}"
                     ;;
                 ':')
-                    echo -n "%{F#FFcee318}"
+                    echo -n "%{-u}%{F#FFcee318}"
                     ;;
                 '!') # urgent tag
-                    echo -n "%{Fred}"
+                    echo -n "%{-u}%{Fred}"
                     ;;
                 *)
-                    echo -n "%{F#FFaaaaaa}"
+                    echo -n "%{-u}%{F#FFaaaaaa}"
                     ;;
             esac
             echo -n "   ${i:1}   " | tr '[:lower:]' '[:upper:]'
@@ -252,4 +252,4 @@ herbstclient pad $monitor 25
                 ;;
         esac
     done
-} 2> /dev/null | bar -g x25++ -u 1 -f -*-terminus-bold-r-*-*-12-*-*-*-*-*-*-*,-*-stlarch-*-*-*-*-*-*-*-*-*-*-*-* $1
+} 2> /dev/null | bar -g x25++ -u 3 -f -*-terminus-bold-r-*-*-12-*-*-*-*-*-*-*,-*-stlarch-*-*-*-*-*-*-*-*-*-*-*-* $1
