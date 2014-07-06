@@ -140,7 +140,7 @@ herbstclient pad $monitor 25
 
     # date
     while true ; do
-        date +'date_day %A %e.  '
+        date +'date_day %A %e.%-m '
         date +'date_min %H:%M  '
         sleep 60 || break
     done > >(uniq_linebuffered) &
@@ -216,7 +216,7 @@ herbstclient pad $monitor 25
         echo -n "$separator"
         echo -n "$date_day" | tr '[:lower:]' '[:upper:]'
         echo -n "%{F#FFaaaaaa}"
-        echo -n "$date_min  " | tr '[:lower:]' '[:upper:]'
+        echo -n " $date_min  " | tr '[:lower:]' '[:upper:]'
         echo
      
         # wait for next event
