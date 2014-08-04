@@ -10,6 +10,12 @@ function uniq_linebuffered() {
     awk -W interactive '$0 != l { print ; l=$0 ; fflush(); }' "$@"
 }
 
+function volume () {
+    val=$(amixer sget Master | sed -n 's/.*\[\([0-9/]*%\)\].*/\1/p' | uniq)
+
+    echo -n  " $val"
+}
+
 
 function termStatus(){
     t='/sys/class/thermal/thermal_zone0'
@@ -207,6 +213,7 @@ herbstclient pad $monitor 25
 
         # align right
         echo -n "%{r]"
+        echo  -n " $separator $volume_str"
         echo  -n " $separator $RAM"   
         echo  -n " $separator $thermstatus"   
         echo  -n " $separator $batstatus"     # ⚡
@@ -249,6 +256,7 @@ herbstclient pad $monitor 25
                 thermstatus="$(termStatus)"
                 wifi_str="$(wifiStatus)"
                 RAM="$(RAM_usage)"
+                volume_str="$(volume)"
                 ;;
         esac
     done
