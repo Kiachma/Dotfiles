@@ -35,9 +35,9 @@ function get_mpd_song() {
     fi
 }
 function RAM_usage() {
-    free=$(grep MemFree /proc/meminfo | awk '{print $2}')
-    let freeMB=free/1000
-    echo "$freeMB MB"
+    used=$(free -m | grep Mem | awk '{print $3}' )
+    tot=$(free -m | grep Mem | awk '{print $2}' )
+    echo " $used / $tot"
 }
 function nextEvent(){
     EVENT=$(gcalcli  --military --nostarted --nocolor --cal Emil --cal Pemp --cal Skola --cal 2014 --locale sv_FI.utf8  agenda | sed -n '2p' |sed 's/[ \t]*$//')
