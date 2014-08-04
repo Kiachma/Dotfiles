@@ -20,7 +20,7 @@ function termStatus(){
 
 function get_mpd_song() {
     # use mpc to get currently playing song, uppercase it
-    song=$(ncmpcpp --now-playing | sed -e 's#.*- \(\)#\1#')   
+    song=$(ncmpcpp --now-playing | sed -e 's#.*) \(\)#\1#')   
     # let's skip ft. parts, etc. to get some more space
     if [ "$song" != "" ] && [[ $song != Couldn* ]]; then
         echo -n "  $song" 
@@ -173,7 +173,7 @@ herbstclient pad $monitor 25
     visible=true
 
     while true ; do
-        echo -n "%{U#FFcee318}%{c}"
+        echo -n "%{S$monitor}%{U#FFcee318}%{c}"
         for i in "${TAGS[@]}" ; do
             case ${i:0:1} in
                 '#') # current tag
@@ -195,7 +195,7 @@ herbstclient pad $monitor 25
             echo -n "  ${i:1}  " | tr '[:lower:]' '[:upper:]'
         done
         # align left
-        echo -n "%{l}"
+        echo -n "%{l}%{F#FFf3f3f3}"
         # display song and separator only if something's playing
         if [ "$song" == "" ]; then
             echo -n "$next_event"
