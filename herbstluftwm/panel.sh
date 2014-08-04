@@ -10,6 +10,12 @@ function uniq_linebuffered() {
     awk -W interactive '$0 != l { print ; l=$0 ; fflush(); }' "$@"
 }
 
+function volume () {
+    val=$(amixer sget Master | sed -n 's/.*\[\([0-9/]*%\)\].*/\1/p' | uniq)
+
+    echo -n  " $val"
+}
+
 
 function termStatus(){
     t='/sys/class/thermal/thermal_zone0'
@@ -20,7 +26,7 @@ function termStatus(){
 
 function get_mpd_song() {
     # use mpc to get currently playing song, uppercase it
-    song=$(ncmpcpp --now-playing | sed -e 's#.*- \(\)#\1#')   
+    song=$(ncmpcpp --now-playing | sed -e 's#.*) \(\)#\1#')   
     # let's skip ft. parts, etc. to get some more space
     if [ "$song" != "" ] && [[ $song != Couldn* ]]; then
         echo -n "  $song" 
@@ -29,9 +35,9 @@ function get_mpd_song() {
     fi
 }
 function RAM_usage() {
-    free=$(grep MemFree /proc/meminfo | awk '{print $2}')
-    let freeMB=free/1000
-    echo "$freeMB MB"
+    used=$(free -m | grep Mem | awk '{print $3}' )
+    tot=$(free -m | grep Mem | awk '{print $2}' )
+    echo " $used / $tot"
 }
 function nextEvent(){
     EVENT=$(gcalcli  --military --nostarted --nocolor --cal Emil --cal Pemp --cal Skola --cal 2014 --locale sv_FI.utf8  agenda | sed -n '2p' |sed 's/[ \t]*$//')
@@ -173,7 +179,7 @@ herbstclient pad $monitor 25
     visible=true
 
     while true ; do
-        echo -n "%{U#FFcee318}%{c}"
+        echo -n "%{S$monitor}%{U#FFcee318}%{c}"
         for i in "${TAGS[@]}" ; do
             case ${i:0:1} in
                 '#') # current tag
@@ -195,7 +201,7 @@ herbstclient pad $monitor 25
             echo -n "  ${i:1}  " | tr '[:lower:]' '[:upper:]'
         done
         # align left
-        echo -n "%{l}"
+        echo -n "%{l}%{F#FFf3f3f3}"
         # display song and separator only if something's playing
         if [ "$song" == "" ]; then
             echo -n "$next_event"
@@ -207,6 +213,7 @@ herbstclient pad $monitor 25
 
         # align right
         echo -n "%{r]"
+        echo  -n " $separator $volume_str"
         echo  -n " $separator $RAM"   
         echo  -n " $separator $thermstatus"   
         echo  -n " $separator $batstatus"     # ⚡
@@ -249,6 +256,7 @@ herbstclient pad $monitor 25
                 thermstatus="$(termStatus)"
                 wifi_str="$(wifiStatus)"
                 RAM="$(RAM_usage)"
+                volume_str="$(volume)"
                 ;;
         esac
     done
