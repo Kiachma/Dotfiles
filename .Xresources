@@ -1,4 +1,12 @@
 
+Xft.antialias: true
+Xft.autohint: true
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcdlight
+Xft.rgba: rgb
+Xft.dpi: 96
+
 ! vim: set filetype=xdefaults :
 ! gjm scheme
 ! *background: rgba:0000/0000/0000/dddd

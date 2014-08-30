@@ -23,6 +23,8 @@ xset m 1/5
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
+xrdb -merge ~/.Xresources
+
 #Fix grey window in java programs
 export _JAVA_AWT_WM_NONREPARENTING=1
 exec   herbstluftwm --locked

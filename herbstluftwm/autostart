@@ -35,7 +35,7 @@ hc keybind $Mod-Control-f floating toggle
 hc keybind $Mod-e spawn spotify &
 
 # tags
-TAG_NAMES=( web terminals development files documentation mail media social random float )
+TAG_NAMES=( web term dev files doc mail media soc random float )
 TAG_KEYS=( {1..9} 0 )
 
 hc rename default "${TAG_NAMES[0]}" || true

@@ -40,12 +40,12 @@ function RAM_usage() {
     echo " $used / $tot"
 }
 function nextEvent(){
-    EVENT=$(gcalcli  --military --nostarted --nocolor --cal Emil --cal Pemp --cal Skola --cal 2014 --locale sv_FI.utf8  agenda | sed -n '2p' |sed 's/[ \t]*$//')
+    EVENT=$(cat  /tmp/gcalcli_agenda.txt | sed -n '2p' |sed 's/[ \t]*$//')
     echo "$EVENT"
 }
 function wifiStatus(){
-    QUAL=$(iwconfig wlp3s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}')
-    MAX=$(iwconfig wlp3s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $4}')
+    QUAL=$(iwconfig wlan0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}')
+    MAX=$(iwconfig wlan0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $4}')
     PERC=$(echo $QUAL*100/$MAX | bc)
     icon=""
     if ((0<=$PERC && $PERC<=20))
@@ -148,29 +148,16 @@ herbstclient pad $monitor 25
     while true ; do
         date +'date_day %A %e.%-m '
         date +'date_min %H:%M  '
-        sleep 60 || break
+        echo tick1
+        sleep 1 || break
     done > >(uniq_linebuffered) &
     date_pid=$!
-
-    # tick
-    while true; do 
-        echo tick; 
-        sleep 20; 
-    done &
-    tick_pid=$!
-
-     # tick60
-    while true; do 
-        echo tick60; 
-        sleep 60; 
-    done &
-    tick60_pid=$!
 
     # hlwm events
     herbstclient --idle
 
     # exiting; kill stray event-emitting processes
-    kill $date_pid $tick_pid $tick60_pid
+    kill $date_pid1
 } 2> /dev/null | {
     TAGS=( $(herbstclient tag_status $monitor) )
     unset TAGS[${#TAGS[@]}-1]
@@ -247,16 +234,15 @@ herbstclient pad $monitor 25
             reload)
                 exit
                 ;;
-            tick60)
-                song="$(get_mpd_song)"
+            tick1)
+    
+                # song="$(get_mpd_song)"
                 batstatus="$(Battery)"
-                next_event="$(nextEvent)"
-                ;;
-            tick)
                 thermstatus="$(termStatus)"
                 wifi_str="$(wifiStatus)"
                 RAM="$(RAM_usage)"
                 volume_str="$(volume)"
+                next_event="$(nextEvent)"
                 ;;
         esac
     done
