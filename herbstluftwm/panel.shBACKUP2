@@ -207,8 +207,8 @@ herbstclient pad $monitor 25
                                 curr=$(cat $t/temp)
                                 degrees=$(printf '%d / 1000\n' $curr | bc)
                                 echo  $degrees )°C"
-                wifi_str="$(    QUAL=$(iwconfig wlp3s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}')
-                                MAX=$(iwconfig wlp3s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $4}')
+                wifi_str="$(    QUAL=$(iwconfig wlan0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}')
+                                MAX=$(iwconfig wlan0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $4}')
                                 PERC=$(echo $QUAL*100/$MAX | bc)
                                 icon=""
                                 if ((0<=$PERC && $PERC<=20))
