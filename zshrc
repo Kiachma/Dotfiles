@@ -82,10 +82,12 @@ plugins=(colorize,git,archlinux,django,git-flow,github)
 
 source $ZSH/oh-my-zsh.sh
 
-export CHROME_BIN=/usr/bin/chromium
+export CHROME_BIN=/usr/bin/google-chrome-beta
 export BROWSER=firefox
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 export EDITOR=vim
+GMON_OUT_PREFIX="gmon".`uname -n`
+export GMON_OUT_PREFIX
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
