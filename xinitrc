@@ -20,8 +20,13 @@ xset m 1/5
 #exec awesome
 
 #Fix fonts
+#
+mkfontscale /usr/share/fonts/local
+mkfontdir /usr/share/fonts/local
 xset +fp /usr/share/fonts/local
-xset fp rehash
+#xset +fp /usr/share/fonts/
+
+#xset fp rehash
 
 xrdb -merge ~/.Xresources
 

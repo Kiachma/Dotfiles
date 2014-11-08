@@ -123,6 +123,8 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off
 hc rule class=Wine fullscreen=on
 
 hc rule class=feh manage=off
+hc rule title=ArachnoGraphic manage=off
+
 
 # Set wallpaper
 feh --bg-scale /home/eaura/Google\ Drive/wallpaper.jpg 

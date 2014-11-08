@@ -26,7 +26,8 @@ function termStatus(){
 
 function get_mpd_song() {
     # use mpc to get currently playing song, uppercase it
-    song=$(ncmpcpp --now-playing | sed -e 's#.*) \(\)#\1#')   
+    song=$(qdbus org.mpris.clementine /Player org.freedesktop.MediaPlayer.GetMetadata | grep title: |  cut -c8- | cut -c-70)       
+    #song=$(ncmpcpp --now-playing | sed -e 's#.*) \(\)#\1#')   
     # let's skip ft. parts, etc. to get some more space
     if [ "$song" != "" ] && [[ $song != Couldn* ]]; then
         echo -n "  $song" 
@@ -172,14 +173,20 @@ herbstclient pad $monitor 25
                 '#') # current tag
                     echo -n "%{+u}%{F#FFf3f3f3}"
                     ;;
-                '+') # active on other monitor
+                '+') #  the tag is viewed on the specified MONITOR, but this monitor is not focused. 
                     echo -n "%{-u}%{F#FFcee318}"
                     ;;
-                ':')
+                ':') # the tag is not empty 
                     echo -n "%{-u}%{F#FFcee318}"
                     ;;
-                '!') # urgent tag
+                '!') # the tag contains an urgent window 
                     echo -n "%{-u}%{Fred}"
+                    ;;
+                '%') # % the tag is viewed on a different MONITOR and it is focused. 
+                    echo -n "%{+u}%{F#FFf3f3f3}%{U#FFbe67e1}"
+                    ;;
+                '-') # the tag is viewed on a different MONITOR, but this monitor is not focused. 
+                    echo -n "%{-u}%{F#FFbe67e1}"
                     ;;
                 *)
                     echo -n "%{-u}%{F#FFaaaaaa}"
@@ -236,7 +243,7 @@ herbstclient pad $monitor 25
                 ;;
             tick1)
     
-                # song="$(get_mpd_song)"
+                song="$(get_mpd_song)"
                 batstatus="$(Battery)"
                 thermstatus="$(termStatus)"
                 wifi_str="$(wifiStatus)"
