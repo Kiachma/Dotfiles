@@ -24,7 +24,7 @@ hc keybind $Mod-Shift-c close_or_remove
 hc keybind $Mod-Return spawn xterm
 
 
-hc keybind $Mod-q spawn firefox
+hc keybind $Mod-q spawn firefox-developer
 hc keybind $Mod-t spawn chromium --app="https://mail.google.com"
 hc keybind $Mod-p spawn dmenu-launch
 hc keybind $Mod-s spawn subl3
@@ -123,7 +123,6 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off
 hc rule class=Wine fullscreen=on
 
 hc rule class=feh manage=off
-hc rule title=ArachnoGraphic manage=off
 
 
 # Set wallpaper
@@ -135,7 +134,6 @@ feh --bg-scale /home/eaura/Google\ Drive/wallpaper.jpg
 # unlock, just to be sure
 hc unlock
 
-redshift &
 herbstclient set tree_style '╾│ ├└╼─┐'
 
 # do multi monitor setup here, e.g.:

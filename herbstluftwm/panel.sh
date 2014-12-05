@@ -38,7 +38,7 @@ function get_mpd_song() {
 function RAM_usage() {
     used=$(free -m | grep Mem | awk '{print $3}' )
     tot=$(free -m | grep Mem | awk '{print $2}' )
-    echo " $used / $tot"
+    echo "%{A:sysinfo_popup.sh:}  $used / $tot %{A}"
 }
 function nextEvent(){
     EVENT=$(cat  /tmp/gcalcli_agenda.txt | sed -n '2p' |sed 's/[ \t]*$//')
@@ -68,6 +68,12 @@ function wifiStatus(){
         icon="$PERC"
     fi 
     echo $icon
+}
+ 
+function Todo(){
+    item=$(todo.sh list  | head -1 | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g")
+
+    echo $item
 }
 function Battery() {
     #!/bin/bash
@@ -197,12 +203,12 @@ herbstclient pad $monitor 25
         # align left
         echo -n "%{l}%{F#FFf3f3f3}"
         # display song and separator only if something's playing
-        if [ "$song" == "" ]; then
-            echo -n "$next_event"
+        #if [ "$song" == "" ]; then
+            echo -n "$todo"
         
-        else
-            echo -n "$song"
-        fi
+        #else
+         #   echo -n "$song"
+        #fi
         echo -n "$separator"
 
         # align right
@@ -249,8 +255,8 @@ herbstclient pad $monitor 25
                 wifi_str="$(wifiStatus)"
                 RAM="$(RAM_usage)"
                 volume_str="$(volume)"
-                next_event="$(nextEvent)"
+                todo="$(Todo)"
                 ;;
         esac
     done
-} 2> /dev/null | bar -g x25++ -u 3 -f -*-terminus-bold-r-*-*-12-*-*-*-*-*-*-*,-*-stlarch-*-*-*-*-*-*-*-*-*-*-*-* $1
+} 2> /dev/null | bar -g x25++ -u 3 -p -f -*-terminus-bold-r-*-*-12-*-*-*-*-*-*-*,-*-stlarch-*-*-*-*-*-*-*-*-*-*-*-* $1 |  while read line; do eval "$line"; done

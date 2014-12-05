@@ -18,8 +18,9 @@ alias poweroff='sudo poweroff'
 alias reboot='sudo reboot'
 alias ntnu='ssh emilia@login.stud.ntnu.no'
 alias webfaction='ssh kiachma@web332.webfaction.com'
-alias skola='cd /home/eaura/Dropbox/Skola/'
-
+alias t='todo.sh'
+alias jolla='ssh nemo@192.168.1.139'
+ 
 extract () {
     if [ -f $1 ] ; then
       case $1 in
@@ -90,6 +91,6 @@ GMON_OUT_PREFIX="gmon".`uname -n`
 export GMON_OUT_PREFIX
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-
+export FIREFOX_BIN=/usr/bin/firefox-developer
 # Customize to your needs...
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/bin:/usr/bin:/home/eaura/.gem/ruby/2.0.0/bin/:/home/eaura/.bin/:/home/eaura/.gem/ruby/2.1.0/bin/

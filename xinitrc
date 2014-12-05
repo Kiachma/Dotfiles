@@ -16,22 +16,15 @@ xbindkeys &
 xset m 1/5
 
 
-# -- load awesome window manager
-#exec awesome
-
-#Fix fonts
-#
-mkfontscale /usr/share/fonts/local
-mkfontdir /usr/share/fonts/local
-xset +fp /usr/share/fonts/local
-#xset +fp /usr/share/fonts/
-
-#xset fp rehash
 
 xrdb -merge ~/.Xresources
 
 #Fix grey window in java programs
 export _JAVA_AWT_WM_NONREPARENTING=1
+#Fix fonts
+#
+mkfontscale /usr/share/fonts/local
+mkfontdir /usr/share/fonts/local
+xset +fp /usr/share/fonts/local
 exec   herbstluftwm --locked
-sleep 25 && dropboxd
 
