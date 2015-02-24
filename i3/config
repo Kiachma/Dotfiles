@@ -20,7 +20,7 @@ set $tag5 "5:"
 set $tag6 "6:"
 set $tag7 "7:"
 set $tag8 "8:"
-set $tag9 "9:"
+set $tag9 "9:"
 set $tag0 "10:"
 
 
@@ -50,7 +50,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec dmenu_run
+bindsym $mod+p exec --no-startup-id i3-dmenu-desktop
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -145,6 +145,23 @@ bindsym $mod+q exec firefox-developer
 bindsym $mod+s exec subl3
 bindsym $mod+d exec thunar
 bindsym $mod+t exec slock
+bindsym $mod+m exec exec uxterm muttPW; mark Mail'
+
+#Audio keys
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 3%- 
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 3%+
+bindsym XF86AudioMute exec amixer -q set Master toggle
+
+
+bindsym XF86AudioPlay exec ~/.bin/spotify-media-keys.sh play
+bindsym XF86AudioNext exec ~/.bin/spotify-media-keys.sh next
+bindsym XF86AudioPrev exec ~/.bin/spotify-media-keys.sh prev
+
+
+# Monitor keys
+bindsym $mod+Control+i exec xrandr --output DVI-I-2 --auto --output DVI-I-3 --off
+bindsym $mod+Control+o exec xrandr --output DVI-I-3 --auto --output DVI-I-2 --off
+bindsym $mod+Control+p exec xrandr --output DVI-I-3 --auto --right-of DVI-I-2 --auto
 
 #Load on startup
 exec firefox-developer
@@ -154,7 +171,7 @@ exec "feh --bg-scale /home/eaura/Google\ Drive/wallpaper.jpg"
 #colors
 #class                 border  backgr. text    indicator
 client.focused          #ccff00 #ccff00 #f3f3f3 #ff9f00
-client.focused_inactive #63e7f0 #63e7f0 #f3f3f3 #ff9f00
+client.focused_inactive #63e7f0 #63e7f0 #f3f3f3 #ff9f00i
 client.unfocused        #101010 #101010 #f3f3f3 #ff9f00
 client.urgent           #FF3399 #FF3399 #f3f3f3 #ff9f00
 
