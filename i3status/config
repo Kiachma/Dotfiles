@@ -7,46 +7,63 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-        color_good = "#cee318"
-        color_degraded ="#ff9f00"
-        color_bad = "#ff00a0"
-        interval = 5
+    color_good = "#cee318"
+    color_degraded ="#ff9f00"
+    color_bad = "#ff00a0"
+    interval = 5
 }
 
 order += "cpu_usage"
 order += "disk /"
 order += "load"
-order += "ethernet enp2s0"
+order += "wireless wlp1s0"
 order += "volume master"
+order += "battery 0"
 order += "tztime local"
 
 
 
-ethernet enp2s0 {
-        # if you use %speed, i3status requires root privileges
-        format_up = " %speed"
-        format_down = " down"
+
+wireless wlp1s0 {
+   format_up = " %quality %essid, %bitrate %ip"
+   format_down = " down"
 }
 
-tztime local {
+battery 0 {
+    format = "  %status %percentage %remaining"
+    format_down = " -"
+    path = "/sys/class/power_supply/BAT%d/uevent"
+    low_threshold = 10
+    last_full_capacity = true
+}
+
+
+
+#ethernet enp2s0 {
+    # if you use %speed, i3status requires root privileges
+    #             format_up = " %speed"
+    #           format_down = " down"
+    #     }
+
+    tztime local {
         format = " %d.%m.%Y  %H:%M"
-}
+    }
 
-load {
+    load {
         format = " %1min"
-}
+    }
 
-disk "/" {
-        format = " %avail"
-}
+    disk "/" {
+        format = " %avail"
+    }
 
-cpu_usage {
-	format = " %usage"
-}
+    cpu_usage {
+     format = " %usage"
+ }
 
-volume master {
-        format = " %volume"
-        device = "default"
-        mixer = "Master"
-        mixer_idx = 0
+ volume master {
+    format = " %volume"
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
 }
