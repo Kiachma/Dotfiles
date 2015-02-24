@@ -26,5 +26,5 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 mkfontscale /usr/share/fonts/local
 mkfontdir /usr/share/fonts/local
 xset +fp /usr/share/fonts/local
-exec   herbstluftwm --locked
+exec   i3 
 
