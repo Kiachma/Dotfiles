@@ -145,7 +145,7 @@ bindsym $mod+q exec firefox-developer
 bindsym $mod+s exec subl3
 bindsym $mod+d exec thunar
 bindsym $mod+t exec slock
-bindsym $mod+m exec exec uxterm muttPW; mark Mail'
+bindsym $mod+m exec exec uxterm mutt; mark Mail'
 
 #Audio keys
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 3%- 

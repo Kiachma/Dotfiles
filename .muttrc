@@ -85,4 +85,4 @@ macro pager cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 bind index G imap-fetch-mail
 
 bind index <tab>    sync-mailbox
-source ~/.mutt-colors-solarized-dark-16.muttrc  
+source ~/.mutt-colors.muttrc  
