@@ -26,7 +26,7 @@ set imap_check_subscribed
 
 set hostname = gmail.com
 
-set mail_check = 120
+set mail_check = 5
 
 set timeout = 300
 
@@ -49,6 +49,8 @@ set include
 set sort = 'threads'
 
 set auto_tag = yes
+
+set beep_new = yes
 
 hdr_order Date From To Cc
 
@@ -77,6 +79,8 @@ macro index,pager gs "<change-folder>=[Gmail]/Stjärnmärkta<enter>" "Go to star
 macro index,pager gd "<change-folder>=[Gmail]/Utkast<enter>" "Go to drafts"
 
 macro index,pager gt "<change-folder>=[Gmail]/Skickade mail<enter>" "Go to sent mail"
+
+macro pager cb <pipe-entry>'urlview'<enter> 'Follow links with urlview' 
 
 bind index G imap-fetch-mail
 

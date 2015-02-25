@@ -1,4 +1,5 @@
-
+XTerm*bellIsUrgent: true
+URxvt*urgentOnBell: true
 Xft.antialias: true
 Xft.autohint: true
 Xft.hinting: true
