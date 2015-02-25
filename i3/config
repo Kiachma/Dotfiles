@@ -43,7 +43,7 @@ font pango:DejaVu Sans Mono 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
+# start a terminal 
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
@@ -131,21 +131,20 @@ bindsym $mod+Shift+9 move container to workspace $tag9
 bindsym $mod+Shift+0 move container to workspace $tag0
 
 #Rules
-assign [class="xterm"] $tag2
 assign [class="subl3"] $tag3
 assign [class="Firefox"] $tag1
-assign [class="Google-chrome-beta"] $tag0
 assign [class="Nautilus"] $tag4
 assign [class="thunar"] $tag4
-assign [class="spotify"] $tag7
+assign [title="Spotify"] $tag7
 assign [class="skype"] $tag8
+assign [title="Mail"] $tag9
 
 #exec bindings
 bindsym $mod+q exec firefox-developer
 bindsym $mod+s exec subl3
 bindsym $mod+d exec thunar
 bindsym $mod+t exec slock
-bindsym $mod+m exec exec uxterm mutt; mark Mail'
+bindsym $mod+m exec  uxterm -title 'Mail' mutt 
 
 #Audio keys
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 3%- 
