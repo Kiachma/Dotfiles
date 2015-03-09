@@ -20,6 +20,12 @@ alias ntnu='ssh emilia@login.stud.ntnu.no'
 alias webfaction='ssh kiachma@web332.webfaction.com'
 alias t='todo.sh'
 alias jolla='ssh nemo@192.168.1.139'
+
+# Spotifyd
+sc () {
+    echo $@ | socat - UNIX-CONNECT:/tmp/spotifyd 2>/dev/null
+}
+
  
 extract () {
     if [ -f $1 ] ; then

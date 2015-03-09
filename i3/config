@@ -9,7 +9,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 
 set $tag1 "1:"
@@ -50,7 +50,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+p exec --no-startup-id dmenu_extended_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -145,6 +145,8 @@ bindsym $mod+s exec subl3
 bindsym $mod+d exec thunar
 bindsym $mod+t exec slock
 bindsym $mod+m exec  uxterm -title 'Mail' mutt 
+bindsym $mod+Control+c exec  khalendar.sh  
+bindsym $mod+c exec  uxterm -title 'Calendar' -e "khal interactive"   
 
 #Audio keys
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 3%- 
@@ -164,13 +166,13 @@ bindsym $mod+Control+p exec xrandr --output DVI-I-3 --auto --right-of DVI-I-2 --
 
 #Load on startup
 exec firefox-developer
-exec xterm
+exec uxterm -title 'Mail' mutt 
 exec "feh --bg-scale /home/eaura/Google\ Drive/wallpaper.jpg" 
 
 #colors
 #class                 border  backgr. text    indicator
 client.focused          #ccff00 #ccff00 #f3f3f3 #ff9f00
-client.focused_inactive #63e7f0 #63e7f0 #f3f3f3 #ff9f00i
+client.focused_inactive #63e7f0 #63e7f0 #f3f3f3 #ff9f00
 client.unfocused        #101010 #101010 #f3f3f3 #ff9f00
 client.urgent           #FF3399 #FF3399 #f3f3f3 #ff9f00
 
@@ -210,6 +212,7 @@ bindsym $mod+r mode "resize"
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+for_window [title="Calendar"] floating enable
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
