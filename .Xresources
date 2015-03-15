@@ -11,7 +11,8 @@ Xft.dpi: 96
 ! vim: set filetype=xdefaults :
 ! gjm scheme
 ! *background: rgba:0000/0000/0000/dddd
-xterm*faceName:           Fantasque Sans Mono:style=Regular:size=9
+xterm*faceName:       M+ 1mn,M+ 1mn Regular:style=regular:size=10
+
 *cursorColor:   #cee318
 
 *background:    #1C1C1C

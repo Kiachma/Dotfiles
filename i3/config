@@ -223,11 +223,11 @@ bar {
 	colors {
 		background #1c1c1c
 		statusline #f3f3f3
-		separator #cee318
+		separator #545454
 		focused_workspace  #1c1c1c #1c1c1c #cee318
 		active_workspace   #1c1c1c #1c1c1c #f3f3f3
 		inactive_workspace #1c1c1c #1c1c1c #aaaaaa
         	urgent_workspace   #1c1c1c #1c1c1c #FF3399
 	}
-	font pango:Roboto, FontAwesome 12
+	font pango: M+ 2C Regular, FontAwesome 10
 }
