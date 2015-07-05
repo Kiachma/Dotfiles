@@ -1,51 +1,42 @@
-XTerm*locale: true
-!TomorrowNightEighties
-#define t_background        #2d2d2d
-#define t_current_line      #393939
-#define t_selection      	#515151
-#define t_foreground      	#cccccc
-#define t_comment	     	#999999
-#define t_red		     	#f2777a
-#define t_orange	     	#f99157
-#define t_yellow        	#ffcc66
-#define t_green	        	#99cc99
-#define t_aqua	        	#66cccc
-#define t_blue	        	#6699cc
-#define t_purple        	#cc99cc
+! Base16 Eighties
+! Scheme: Chris Kempson (http://chriskempson.com)
 xterm*faceName:       DejaVu Sans Mono, DejaVu Sans Mono Regular:style=regular:size=8
 
-*.foreground:   t_foreground
-*.background:   t_background
-*.cursorColor:  #aeafad
+#define base00 #2d2d2d
+#define base01 #393939
+#define base02 #515151
+#define base03 #747369
+#define base04 #a09f93
+#define base05 #d3d0c8
+#define base06 #e8e6df
+#define base07 #f2f0ec
+#define base08 #f2777a
+#define base09 #f99157
+#define base0A #ffcc66
+#define base0B #99cc99
+#define base0C #66cccc
+#define base0D #6699cc
+#define base0E #cc99cc
+#define base0F #d27b53
 
-! Black / Grey
-*.color0:       #000000
-*.color8:       #666666
+*.foreground:   base05
+*.background:   base00
+*.cursorColor:  base05
 
-! Red / Bright Red
-*.color1:       t_red
-*.color9:       #FF3334
+*.color0:       base00
+*.color1:       base08
+*.color2:       base0B
+*.color3:       base0A
+*.color4:       base0D
+*.color5:       base0E
+*.color6:       base0C
+*.color7:       base05
 
-! Green + Bright Green
-*.color2:       t_green
-*.color10:      #9ec400
-
-! Yellow (Orange) + Bright Yellow (Yellow)
-*.color3:       t_orange
-*.color11:      t_yellow
-
-! Blue + Bright Blue
-*.color4:       t_blue
-*.color12:      t_blue
-
-! Magenta (Purple) + Bright Magenta
-*.color5:       t_purple
-*.color13:      #b777e0
-
-! Cyan (Aqua) + Bright Cyan
-*.color6:       t_aqua
-*.color14:      #54ced6
-
-! Light Grey (Selection) + White (Current Line)
-*.color7:       t_selection
-*.color15:      t_current_line
+*.color8:       base03
+*.color9:       base09
+*.color10:      base01
+*.color11:      base02
+*.color12:      base04
+*.color13:      base06
+*.color14:      base0F
+*.color15:      base07
