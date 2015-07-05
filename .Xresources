@@ -1,53 +1,51 @@
-XTerm*bellIsUrgent: true
-URxvt*urgentOnBell: true
-Xft.antialias: true
-Xft.autohint: true
-Xft.hinting: true
-Xft.hintstyle: hintslight
-Xft.lcdfilter: lcdlight
-Xft.rgba: rgb
-Xft.dpi: 96
+XTerm*locale: true
+!TomorrowNightEighties
+#define t_background        #2d2d2d
+#define t_current_line      #393939
+#define t_selection      	#515151
+#define t_foreground      	#cccccc
+#define t_comment	     	#999999
+#define t_red		     	#f2777a
+#define t_orange	     	#f99157
+#define t_yellow        	#ffcc66
+#define t_green	        	#99cc99
+#define t_aqua	        	#66cccc
+#define t_blue	        	#6699cc
+#define t_purple        	#cc99cc
+xterm*faceName:       DejaVu Sans Mono, DejaVu Sans Mono Regular:style=regular:size=8
 
-! vim: set filetype=xdefaults :
-! gjm scheme
-! *background: rgba:0000/0000/0000/dddd
-xterm*faceName:       M+ 1mn,M+ 1mn Regular:style=regular:size=10
+*.foreground:   t_foreground
+*.background:   t_background
+*.cursorColor:  #aeafad
 
-*cursorColor:   #cee318
+! Black / Grey
+*.color0:       #000000
+*.color8:       #666666
 
-*background:    #1C1C1C
-*foreground:    #c5c5c5
+! Red / Bright Red
+*.color1:       t_red
+*.color9:       #FF3334
 
-! black
-*color0:        #1C1C1C
-*color8:        #666666
+! Green + Bright Green
+*.color2:       t_green
+*.color10:      #9ec400
 
-! red
-*color1:        #ff005b
-*color9:        #ff00a0
+! Yellow (Orange) + Bright Yellow (Yellow)
+*.color3:       t_orange
+*.color11:      t_yellow
 
-! green
-*color2:        #cee318
-*color10:       #ccff00
+! Blue + Bright Blue
+*.color4:       t_blue
+*.color12:      t_blue
 
-! yellow
-*color3:        #ffe755
-*color11:       #ff9f00
+! Magenta (Purple) + Bright Magenta
+*.color5:       t_purple
+*.color13:      #b777e0
 
-! blue
-*color4:        #048ac7
-*color12:       #48c6ff
+! Cyan (Aqua) + Bright Cyan
+*.color6:       t_aqua
+*.color14:      #54ced6
 
-! magenta
-*color5:        #833c9f
-*color13:       #be67e1
-
-! cyan 
-*color6:        #0ac1cd
-*color14:       #63e7f0
-
-! white
-*color7:        #e5e5e5
-*color15:       #f3f3f3
-
-
+! Light Grey (Selection) + White (Current Line)
+*.color7:       t_selection
+*.color15:      t_current_line

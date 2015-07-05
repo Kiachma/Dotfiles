@@ -7,17 +7,17 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-    color_good = "#cee318"
-    color_degraded ="#ff9f00"
-    color_bad = "#ff00a0"
+    color_good = "#99cc99"
+    color_degraded ="#f99157"
+    color_bad = "#f2777a"
     interval = 5
 }
 
 order += "cpu_usage"
 order += "disk /"
 order += "load"
-#order += "wireless wlp1s0"
-order += "ethernet enp2s0"
+order += "wireless wlp3s0"
+#order += "ethernet enp2s0"
 order += "volume master"
 order += "battery 0"
 order += "tztime local"
@@ -25,10 +25,10 @@ order += "tztime local"
 
 
 
-#wireless wlp1s0 {
-#   format_up = " %quality %essid, %bitrate %ip"
-#   format_down = " down"
-#}
+wireless wlp3s0  {
+   format_up = " %quality %essid, %bitrate %ip"
+   format_down = " down"
+}
 
 battery 0 {
     format = "  %status %percentage %remaining"
@@ -40,11 +40,11 @@ battery 0 {
 
 
 
-ethernet enp2s0 {
+#ethernet enp2s0 {
      #if you use %speed, i3status requires root privileges
-        format_up = " %ip %speed"
-        format_down = " down"
-}
+ #       format_up = " %ip %speed"
+  #      format_down = " down"
+#}
 
     tztime local {
         format = " %d.%m.%Y  %H:%M"
