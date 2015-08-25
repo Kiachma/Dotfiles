@@ -62,7 +62,7 @@ plugins=(git colorize git-flow node npm)
 alias ls='ls --color=auto'
 alias albin='ssh eaura@albin.abo.fi'
 alias home="cd ~/"
-alias upgrade='pacaur -Syu'
+alias upgrade='pacaur -Syu --domain aur4.archlinux.org'
 alias poweroff='sudo poweroff'
 alias reboot='sudo reboot'
 alias ntnu='ssh emilia@login.stud.ntnu.no'
