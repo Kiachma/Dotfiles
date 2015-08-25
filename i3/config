@@ -132,7 +132,7 @@ bindsym $mod+Shift+0 move container to workspace $tag0
 
 #Rules
 assign [class="subl3"] $tag3
-assign [class="Firefox"] $tag1
+assign [class="Chromium"] $tag1
 assign [class="Nautilus"] $tag4
 assign [class="thunar"] $tag4
 assign [title="Spotify"] $tag7
@@ -140,7 +140,7 @@ assign [class="skype"] $tag8
 assign [title="Mail"] $tag9
 
 #exec bindings
-bindsym $mod+q exec firefox-developer
+bindsym $mod+q exec chromium
 bindsym $mod+s exec subl3
 bindsym $mod+d exec thunar
 bindsym $mod+t exec slock
@@ -165,7 +165,7 @@ bindsym $mod+Control+o exec xrandr --output DVI-I-3 --auto --output DVI-I-2 --of
 bindsym $mod+Control+p exec xrandr --output DVI-I-3 --auto --right-of DVI-I-2 --auto
 
 #Load on startup
-exec firefox-developer
+exec chromium
 exec uxterm -title 'Mail' mutt 
 exec "feh --bg-scale /home/eaura/Google\ Drive/wallpaper.jpg" 
 
