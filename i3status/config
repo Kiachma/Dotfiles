@@ -16,7 +16,7 @@ general {
 order += "cpu_usage"
 order += "disk /"
 order += "load"
-order += "wireless wlp3s0"
+order += "wireless wlan0"
 #order += "ethernet enp2s0"
 order += "volume master"
 order += "battery 0"
@@ -25,7 +25,7 @@ order += "tztime local"
 
 
 
-wireless wlp3s0  {
+wireless wlan0  {
    format_up = " %quality %essid, %bitrate %ip"
    format_down = " down"
 }
