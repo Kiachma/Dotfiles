@@ -54,7 +54,7 @@ PURE_PROMPT_SYMBOL="❯"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colorize git-flow node npm)
+plugins=(git colorize git-flow node npm zsh-syntax-highlighting)
 
 # User configuration
 # alias zshconfig="mate ~/.zshrc"
@@ -134,14 +134,13 @@ GMON_OUT_PREFIX="gmon".`uname -n`
 export GMON_OUT_PREFIX
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 export FIREFOX_BIN=/usr/bin/firefox
 # Customize to your needs...
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/bin:/usr/bin:/home/eaura/.bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=( "$HOME/.zfunctions" $fpath )

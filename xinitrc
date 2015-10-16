@@ -27,5 +27,5 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 mkfontscale /usr/share/fonts/local
 mkfontdir /usr/share/fonts/local
 xset +fp /usr/share/fonts/local
-exec   i3 
+exec i3 -V >> ~/i3log-$(date +'%F-%k-%M-%S') 2>&1
 
