@@ -173,7 +173,7 @@ bindsym $mod+Control+p exec xrandr --output DVI-I-3 --auto --right-of DVI-I-2 --
 exec chromium
 exec uxterm -title 'Mail' mutt 
 exec "feh --bg-scale /home/eaura/Google\ Drive/wallpaper.jpg" 
-
+exec --no-startup-id nm-applet
 #colors
 #class                 border  backgr. text    indicator
 client.focused          #ffcc66 #ffcc66 #f3f3f3 #ff9f00
