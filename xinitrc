@@ -11,6 +11,7 @@ fi
 
 xmodmap ~/.Xmodmap
 xbindkeys &
+xcompmgr &
 
 # -- slow down mouse
 xset m 1/5

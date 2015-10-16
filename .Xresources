@@ -1,6 +1,6 @@
 ! Base16 Eighties
 ! Scheme: Chris Kempson (http://chriskempson.com)
-xterm*faceName:       DejaVu Sans Mono, DejaVu Sans Mono Regular:style=regular:size=8
+xterm*faceName:       Hack, Hack Regular:style=regular:size=8
 
 #define base00 #2d2d2d
 #define base01 #393939
