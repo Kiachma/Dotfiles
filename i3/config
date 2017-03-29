@@ -8,6 +8,23 @@
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
+set $base00 #2d2d2d
+set $base01 #393939
+set $base02 #515151
+set $base03 #747369
+set $base04 #a09f93
+set $base05 #d3d0c8
+set $base06 #e8e6df
+set $base07 #f2f0ec
+set $base08 #f2777a
+set $base09 #f99157
+set $base0A #ffcc66
+set $base0B #99cc99
+set $base0C #66cccc
+set $base0D #6699cc
+set $base0E #cc99cc
+set $base0F #d27b53
+
 
 set $mod Mod4
 
@@ -52,7 +69,7 @@ bindsym $mod+Shift+c kill
 set $bg-color #2d2d2d
 set $text-color #f3f4f5
 # start dmenu (a program launcher)
-bindsym $mod+p exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#ffcc66" -font "Hack 18"
+bindsym $mod+p exec rofi -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#ffcc66" -font "Hack 18"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -142,7 +159,7 @@ assign [class="thunar"] $tag4
 assign [title="Spotify"] $tag7
 assign [class="skype"] $tag8
 assign [title="Mail"] $tag9
-
+assign [class="Firefox"] $tag0
 #exec bindings
 bindsym $mod+q exec chromium
 bindsym $mod+s exec subl3
@@ -176,12 +193,19 @@ exec chromium
 exec uxterm -title 'Mail' mutt 
 exec "feh --bg-scale /home/eaura/Google\ Drive/wallpaper.jpg" 
 exec --no-startup-id nm-applet
-#colors
-#class                 border  backgr. text    indicator
-client.focused          #ffcc66 #ffcc66 #f3f3f3 #ff9f00
-client.focused_inactive #63e7f0 #63e7f0 #f3f3f3 #ff9f00
-client.unfocused        #2d2d2d #2d2d2d #f3f3f3 #ff9f00
-client.urgent           #f2777a #f2777a #f3f3f3 #ff9f00
+exec gnome-settings-daemon   
+exec gnome-keyring-daemon
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+
+# Basic color configuration using the Base16 variables for windows and borders.
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          $base05 $base0D $base00 $base0D $base0D
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+client.placeholder      $base00 $base00 $base05 $base00 $base00
+client.background       $base07
 
 
 # reload the configuration file
@@ -221,20 +245,22 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Calendar"] floating enable
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        position top
-        status_command i3status
-	strip_workspace_numbers yes
-	colors {
-		background #2d2d2d
-		statusline #cccccc
-		separator #545454
-		focused_workspace  #2d2d2d #2d2d2d #ffcc66
-		active_workspace   #2d2d2d #2d2d2d #cccccc
-		inactive_workspace #2d2d2d #2d2d2d #999999
-        	urgent_workspace   #2d2d2d #2d2d2d #f2777a
-	}
-	font pango: Hack, FontAwesome 8
-}
+## Start i3bar to display a workspace bar (plus the system information i3status
+## finds out, if available)
+#bar {
+#        position top
+#        status_command i3status
+#	strip_workspace_numbers yes
+#	colors {
+#		background $base00
+#        separator  $base00
+#        statusline $base04
+#		# State     Border  BG      Text
+#        focused_workspace   $base00 $base00 $base0D
+#        active_workspace    $base00 $base00 $base0A
+#        inactive_workspace  $base00 $base00 $base04
+#        urgent_workspace    $base00 $base00 $base08
+#        binding_mode        $base00 $base00 $base0A     
+#	}
+#	font pango: Hack, FontAwesome 8
+#}

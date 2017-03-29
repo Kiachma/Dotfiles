@@ -54,7 +54,7 @@ PURE_PROMPT_SYMBOL="❯"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colorize git-flow node npm zsh-syntax-highlighting)
+plugins=(git colorize git-flow-avh node npm zsh-syntax-highlighting)
 
 # User configuration
 # alias zshconfig="mate ~/.zshrc"
@@ -62,7 +62,7 @@ plugins=(git colorize git-flow node npm zsh-syntax-highlighting)
 alias ls='ls --color=auto'
 alias albin='ssh eaura@albin.abo.fi'
 alias home="cd ~/"
-alias upgrade='pacaur -Syu --domain aur4.archlinux.org'
+alias upgrade='pacaur -Syu'
 alias poweroff='sudo poweroff'
 alias reboot='sudo reboot'
 alias ntnu='ssh emilia@login.stud.ntnu.no'
@@ -144,3 +144,11 @@ PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 fpath=( "$HOME/.zfunctions" $fpath )
+
+export NVM_DIR="/home/eaura/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export WORKON_HOME=~/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
+[ -n "$XTERM_VERSION" ] && transset-df --id "$WINDOWID" >/dev/null
