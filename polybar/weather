@@ -3,19 +3,19 @@
 import urllib.request, json, requests
 
 
-resp = requests.get(url="http://www.talon.kiachma.webfactional.com/weather/ENDU")
+resp = requests.get(url="http://www.talon.kiachma.webfactional.com/weather/EFTU")
 weather = json.loads(resp.text)
-resp = requests.get(url="http://www.talon.kiachma.webfactional.com/condition")
-cond = json.loads(resp.text)
+#resp = requests.get(url="http://www.talon.kiachma.webfactional.com/condition")
+#cond = json.loads(resp.text)
 
 metar = weather["aviationProducts"]["meteorologicalAerodromeReport"][-1]["metarText"]
 
-if cond == "Standby":
-	print("%%{F#f2777a}%s" % (metar))
-elif cond == "Unrestricted":
-	print("%%{F#99cc99}%s" % (metar))
-else:
-	print("%%{F#ffcc66}%s : %s" % (cond,metar))
+#if cond == "Standby":
+print("%%{F#99cc99}%s" % (metar))
+#elif cond == "Unrestricted":
+#	print("%%{F#99cc99}%s" % (metar))
+#else:
+#	print("%%{F#ffcc66}%s : %s" % (cond,metar))
 
 
 

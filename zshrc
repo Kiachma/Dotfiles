@@ -66,7 +66,7 @@ alias upgrade='pacaur -Syu'
 alias poweroff='sudo poweroff'
 alias reboot='sudo reboot'
 alias ntnu='ssh emilia@login.stud.ntnu.no'
-alias webfaction='ssh kiachma@web332.webfaction.com'
+alias webfaction='ssh kiachma@web583.webfaction.com'
 alias t='todo.sh'
 alias jolla='ssh nemo@192.168.1.139'
 
