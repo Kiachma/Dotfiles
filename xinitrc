@@ -27,5 +27,11 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 mkfontscale /usr/share/fonts/local
 mkfontdir /usr/share/fonts/local
 xset +fp /usr/share/fonts/local
+nitrogen --restore &
+xrandr --output  DVI-I-1 --pos 0x660   --output  DVI-D-0 --rotate left --pos 1920x0
+feh --bg-scale /home/eaura/Google\ Drive/wallpaper.jpg
+gnome-settings-daemon
+gnome-keyring-daemon
+nvidia-settings --load-config-only
 exec i3 -V >> ~/i3log-$(date +'%F-%k-%M-%S') 2>&1
 

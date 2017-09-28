@@ -5,7 +5,7 @@ export ZSH=/home/eaura/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="pure"
+ZSH_THEME="refined"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -129,7 +129,8 @@ source $ZSH/oh-my-zsh.sh
 export CHROME_BIN=/usr/bin/google-chrome-beta
 export BROWSER=firefox-developer
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd -Dsun.java2d.xrender=true'
-export EDITOR=vim
+export EDITOR=nano
+export VISUAL=nano
 GMON_OUT_PREFIX="gmon".`uname -n`
 export GMON_OUT_PREFIX
 export GOPATH=$HOME/go
@@ -145,10 +146,22 @@ PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 fpath=( "$HOME/.zfunctions" $fpath )
 
-export NVM_DIR="/home/eaura/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
 [ -n "$XTERM_VERSION" ] && transset-df --id "$WINDOWID" >/dev/null
+source /usr/share/nvm/init-nvm.sh
+
+# ROS
+lunar() {
+ source /opt/ros/lunar/setup.zsh
+ source $HOME/catkin_ws/devel/setup.zsh
+  export PYTHONPATH=/opt/ros/lunar/lib/python2.7/site-packages:$PYTHONPATH
+  export PKG_CONFIG_PATH="/opt/ros/lunar/lib/pkgconfig:$PKG_CONFIG_PATH"
+  # Optionally, you can set:
+  #export ROS_PACKAGE_PATH=/path/to/your/package/path:$ROS_PACKAGE_PATH
+
+  # Useful aliases
+  alias catkin_make="catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python2 -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so"
+
+  # If you use Gazebo:
+  source /usr/share/gazebo/setup.sh
+}
+

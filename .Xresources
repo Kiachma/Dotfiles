@@ -1,6 +1,6 @@
 ! Base16 Eighties
 ! Scheme: Chris Kempson (http://chriskempson.com)
-xterm*faceName:       Hack, Hack Regular:style=regular:size=8
+xterm*faceName:       Hack Regular:style=regular:size=9
 
 URxvt.scrollBar: false
 
