@@ -1,20 +1,22 @@
 [colors]
-base00=  #2d2d2d
-base01=  #393939
-base02 = #515151
-base03 = #747369
-base04= #a09f93
-base05 = #d3d0c8
-base06= #e8e6df
-base07=  #f2f0ec
-base08 = #f2777a
-base09=  #f99157
-base0A = #ffcc66
-base0B = #99cc99
-base0C = #66cccc
-base0D=  #6699cc
-base0E=  #cc99cc
-base0F=  #d27b53
+
+base00 = #1d1f21
+base01=  #282a2e
+base02 = #373b41
+base03 = #969896
+base04 = #b4b7b4
+base05 = #c5c8c6
+base06 = #e0e0e0
+base07= #ffffff
+base08=  #cc6666
+base09 = #de935f
+base0A = #f0c674
+base0B = #b5bd68
+base0C = #8abeb7
+base0D = #81a2be
+base0E= #b294bb
+base0F = #a3685a
+
 background = ${colors.base00}
 foreground = ${colors.base05}
 
@@ -43,13 +45,13 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = Hack:size=8;1
+font-0 = Knack Nerd Font:size=8;1
 font-1 = FontAwesome:fontformat=truetype:size=8;1
 font-2 = Fantasque Sans Mono:size=7;1
 
-modules-left = i3 music 
+modules-left =title
 modules-center =  weather
-modules-right =   filesystem battery cpu memory temperature pavolume vpncheck date
+modules-right = cal
 
 tray-position =right
 tray-padding = 1
@@ -71,6 +73,82 @@ wm-restack = i3
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
 separator = " "
+
+
+#[module/mpd]
+#type = internal/mpd
+
+#interval = 1
+
+#format-offline-background = ${colors.background}
+#format-online-background = ${colors.background-mod0}
+#toggle-off-foreground = #FF0000
+#toggle-on-foreground = #FF0000
+
+
+#host = 127.0.0.1
+#port = 6600
+
+#format-online =  " ⁣  <label-song>  "
+#format-offline =
+#format-stop =
+
+[bar/bar2]
+bottom = true
+monitor = ${env:MONITOR}
+width = 100%
+height = 15
+offset-x = 0%
+;offset-y = 10%
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = Knack Nerd Font:size=8;1
+font-1 = FontAwesome:fontformat=truetype:size=8;1
+font-2 = Fantasque Sans Mono:size=8;1
+
+modules-left = i3
+modules-center =  spotify
+modules-right = filesystem battery cpu memory temperature pavolume vpncheck date
+
+tray-position =right
+tray-padding = 1
+tray-transparent = false
+tray-offset-y = 0
+tray-offset-x = -0
+tray-maxsize = 18
+tray-detached = false
+tray-background = ${colors.background}
+
+;wm-restack = bspwm
+wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+separator = " "
+
+
+
 [module/weather]
 type = custom/script
 interval = 10
@@ -97,19 +175,18 @@ exec = ~/.config/polybar/weather
 #format-offline =
 #format-stop =
 
-
 [module/i3]
 type = internal/i3
-ws-icon-0 = "1:;"
-ws-icon-1 = "2:;"
-ws-icon-2 = "3:;"
-ws-icon-3 = "4:;"
-ws-icon-4 = "5:;"
-ws-icon-5 = "6:;"
-ws-icon-6 = "7:;"
-ws-icon-7 = "8:;"
-ws-icon-8 = "9:;"
-ws-icon-9 = "10:;"
+ws-icon-0 = "1:web;"
+ws-icon-1 = "2:term;"
+ws-icon-2 = "3:code;"
+ws-icon-3 = "4:text;"
+ws-icon-4 = "5:doc;"
+ws-icon-5 = "6:thunar;"
+ws-icon-6 = "7:music;"
+ws-icon-7 = "8:social;"
+ws-icon-8 = "9:conf;"
+ws-icon-9 = "10:rand;"
 
 ;
 ;strip-wsnumbers = true
@@ -223,10 +300,10 @@ interval = 5
 date =""
 date-alt = "%Y-%m-%d"
 
-time = "%d.%m.%Y %H:%M"
+time = "%A %d.%m %H:%M"
 time-alt = %I:%M %p"
 
-label = "%date% %time%"
+label = "%date% %time%"
 
 
 [module/volume]
@@ -349,25 +426,25 @@ label-mounted =  %free%
 label-unmounted =  not mounted
 label-unmounted-foreground = ${colors.foreground}
 
-; 
+;
 ; [module/xkeyboard]
 ; type = internal/xkeyboard
 ; blacklist-0 = num lock
-; 
+;
 ; format-prefix = " "
 ; format-prefix-foreground = ${colors.foreground-alt}
 ; format-prefix-underline = ${colors.secondary}
-; 
+;
 ; label-layout = %layout%
 ; label-layout-underline = ${colors.secondary}
-; 
+;
 ; label-indicator-padding = 2
 ; label-indicator-margin = 1
 ; label-indicator-background = ${colors.secondary}
 ; label-indicator-underline = ${colors.secondary}
-; 
+;
 
-; 
+;
 ;
 ;[module/xbacklight]
 ;type = internal/xbacklight
@@ -377,7 +454,7 @@ label-unmounted-foreground = ${colors.foreground}
 ;
 ;bar-width = 10
 ;bar-indicator = |
-;bar-indicator-foreground = #ff
+;bar-indicator-foreground =
 ;bar-indicator-font = 2
 ;bar-fill = -
 ;bar-fill-font = 2
@@ -404,7 +481,7 @@ label =  %percentage%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = 
+format-prefix =
 format-prefix-foreground = ${colors.foreground}
 format-underline = #4bffdc
 label =  %percentage_used%%
@@ -446,3 +523,40 @@ click-right = exec pavucontrol
 click-left = ~/.config/polybar/pavolume.sh --togmute
 scroll-up = ~/.config/polybar/pavolume.sh --up
 scroll-down = ~/.config/polybar/pavolume.sh --down
+
+[module/spotify]
+type = custom/script
+exec = ~/.config/polybar/spoti
+exec-if = pgrep -x spotify
+interval = 5
+
+label =  %output:0:100:%
+format-padding = 1
+format-foreground = ${colors.base0B}
+
+click-left = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+click-middle = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+click-right = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+
+[module/title]
+type = internal/xwindow
+
+; Available tags:
+;   <label> (default)
+#format-padding = 4
+
+; Available tokens:
+;   %title%
+; Default: %title%
+label = %title%
+label-maxlen = 100
+
+
+[module/cal]
+type = custom/script
+exec = ~/.config/polybar/cal.sh
+interval = 10
+
+label = %output:0:100:%
+format-padding = 1
+format-foreground = ${colors.foreground}

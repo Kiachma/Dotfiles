@@ -5,7 +5,7 @@ export ZSH=/home/eaura/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="refined"
+ZSH_THEME="theunraveler"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -43,7 +43,7 @@ ZSH_THEME="refined"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=~/.zsh
 
 
 # optionally define some options
@@ -62,18 +62,15 @@ plugins=(git colorize git-flow-avh node npm zsh-syntax-highlighting)
 alias ls='ls --color=auto'
 alias albin='ssh eaura@albin.abo.fi'
 alias home="cd ~/"
-alias upgrade='pacaur -Syu'
+alias upgrade='sudo apt update && sudo apt upgrade'
+alias install='sudo apt-get install'
+alias uninstall='sudo apt-get remove'
 alias poweroff='sudo poweroff'
 alias reboot='sudo reboot'
 alias ntnu='ssh emilia@login.stud.ntnu.no'
 alias webfaction='ssh kiachma@web583.webfaction.com'
 alias t='todo.sh'
 alias jolla='ssh nemo@192.168.1.139'
-
-# Spotifyd
-sc () {
-    echo $@ | socat - UNIX-CONNECT:/tmp/spotifyd 2>/dev/null
-}
 
 
 extract () {
@@ -96,14 +93,26 @@ extract () {
          echo "'$1' is not a valid file"
      fi
 }
-SSHPID=`ps ax|grep -c "[s]sh-agent"`
-if (( $SSHPID == 0 ))
-then
-    ssh-agent > ~/.ssh-env
-    source ~/.ssh-env
-    ssh-add
+SSH_ENV=$HOME/.ssh/environment
+
+# start the ssh-agent
+function start_agent {
+    echo "Initializing new SSH agent..."
+    # spawn ssh-agent
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add
+}
+
+if [ -f "${SSH_ENV}" ]; then
+     . "${SSH_ENV}" > /dev/null
+     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+        start_agent;
+    }
 else
-    source ~/.ssh-env
+    start_agent;
 fi
 
 
@@ -138,7 +147,7 @@ export PATH=$PATH:$GOPATH/bin
 
 export FIREFOX_BIN=/usr/bin/firefox
 # Customize to your needs...
-export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/bin:/usr/bin:/home/eaura/.bin
+export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/bin:/usr/bin:/home/eaura/.bin:/home/eaura/.local/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
@@ -147,7 +156,6 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 fpath=( "$HOME/.zfunctions" $fpath )
 
 [ -n "$XTERM_VERSION" ] && transset-df --id "$WINDOWID" >/dev/null
-source /usr/share/nvm/init-nvm.sh
 
 # ROS
 lunar() {
@@ -164,4 +172,9 @@ lunar() {
   # If you use Gazebo:
   source /usr/share/gazebo/setup.sh
 }
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
