@@ -1,0 +1,5 @@
+ {
+  "LIST_FORMAT_DATETIME": "dddd DD MMM HH:mm",
+
+  "LIST_FORMAT_DATE": "dddd DD MMM [(All)]"
+}
