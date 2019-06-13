@@ -86,6 +86,7 @@ set $bg-color #2d2d2d
 set $text-color #f3f4f5
 # start dmenu (a program launcher)
 bindsym $mod+p exec rofi  -theme ~/.local/share/rofi/themes/base16-tomorrow-night -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -font "Hack 18"
+bindsym $mod+o exec  ROFI_PASS_CONFIG="~/.config/rofi-pass/conf" rofi-pass  -theme ~/.local/share/rofi/themes/base16-tomorrow-night -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -font "Hack 18"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -175,12 +176,13 @@ assign [class="subl"] $tag3
 assign [class="Chromium"] $tag1
 assign [class="Nautilus"] $tag4
 assign [class="thunar"] $tag4
-assign [class="Spotify"] $tag7
+for_window [class="Spotify"] move to workspace $tag7
 assign [class="skype"] $tag8
 assign [title="Mail"] $tag9
 assign [class="Firefox"] $tag1
 assign [class="subl"] $tag3
-assign [class="discord"] $tag8
+assign [class="Disc"] $tag8
+assign [class="Franz"] $tag8
 #exec bindings
 bindsym $mod+q exec firefox
 bindsym $mod+s exec subl
@@ -213,12 +215,13 @@ bindsym $mod+Control+p exec xrandr --output DVI-I-3 --auto --right-of DVI-I-2 --
 exec firefox
 exec spotify
 exec franz
+exec redshift-gtk
 #exec "feh --bg-scale /home/eaura/Google\ Drive/wallpaper.jpg"
 #exec --no-startup-id nm-applet
 #exec gnome-settings-daemon
 #exec gnome-keyring-daemon
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
 # Basic color configuration using the Base16 variables for windows and borders.
 # Property Name         Border  BG      Text    Indicator Child Border

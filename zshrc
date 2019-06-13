@@ -67,11 +67,14 @@ alias install='sudo apt-get install'
 alias uninstall='sudo apt-get remove'
 alias poweroff='sudo poweroff'
 alias reboot='sudo reboot'
-alias ntnu='ssh emilia@login.stud.ntnu.no'
 alias webfaction='ssh kiachma@web583.webfaction.com'
-alias t='todo.sh'
-alias jolla='ssh nemo@192.168.1.139'
+alias cat='bat'
+alias ping='prettyping --nolegend'
+alias preview="fzf --preview 'bat --color \"always\" {}'"
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias help='tldr'
 
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 
 extract () {
     if [ -f $1 ] ; then
@@ -144,6 +147,8 @@ GMON_OUT_PREFIX="gmon".`uname -n`
 export GMON_OUT_PREFIX
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+export GPGKEY=71EA5CB321CB60C1
+export BOSE_ADDR=10.0.0.164
 
 export FIREFOX_BIN=/usr/bin/firefox
 # Customize to your needs...
@@ -178,3 +183,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH=$PATH:/opt/netbeans/bin/
+
+export PATH="/home/eaura/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

@@ -34,6 +34,7 @@ gnome-settings-daemon
 gnome-keyring-daemon
 nvidia-settings --load-config-only
 nm-applet --sm-disable &
+python3 /home/eaura/.mozilla/native-messaging-hosts/passff.py
 # exec i3 -V >> ~/i3log-$(date +'%F-%k-%M-%S') 2>&1
 
 # exec gnome-session

@@ -3,7 +3,7 @@
 import urllib.request, json, requests
 
 
-resp = requests.get(url="http://www.talon.kiachma.webfactional.com/weather/EFTU")
+resp = requests.get(url="http://www.talon.kiachma.webfactional.com/weather/ENTO")
 weather = json.loads(resp.text)
 #resp = requests.get(url="http://www.talon.kiachma.webfactional.com/condition")
 #cond = json.loads(resp.text)
