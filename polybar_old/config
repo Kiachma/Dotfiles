@@ -1,0 +1,228 @@
+include-file = /home/$USER/.config/polybar/colors
+
+include-file = /home/$USER/.config/polybar/modules/weather
+include-file = /home/$USER/.config/polybar/modules/pulseaudio
+include-file = /home/$USER/.config/polybar/modules/battery
+include-file = /home/$USER/.config/polybar/modules/cpu
+include-file = /home/$USER/.config/polybar/modules/date
+include-file = /home/$USER/.config/polybar/modules/memory
+include-file = /home/$USER/.config/polybar/modules/temperature
+include-file = /home/$USER/.config/polybar/modules/i3_nord
+include-file = /home/$USER/.config/polybar/modules/wlan
+[bar/bar1]
+
+monitor = ${env:MONITOR}
+width = 100%
+height = 15
+offset-x = 0%
+;offset-y = 10%
+radius = 0.0
+fixed-center = true
+
+
+background = ${colors.polar-night-1}
+foreground = ${colors.fg}
+
+line-size = 0
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = FuraMono Nerd Font:size=8;1
+font-1 = FontAwesome:size=8:weight=bold;1
+font-2 = FantasqueSansMono Nerd Font:size=7;1
+
+modules-left =i3 title
+modules-center =  weather 
+modules-right = 
+
+tray-position =right
+tray-padding = 1
+tray-transparent = false
+tray-offset-y = 0
+tray-offset-x = -0
+tray-maxsize = 18
+tray-detached = false
+tray-background = ${colors.polar-night-2}
+
+;wm-restack = bspwm
+wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+separator = " "
+
+
+#[module/mpd]
+#type = internal/mpd
+
+#interval = 1
+
+#format-offline-background = ${colors.polar-night-1}
+#format-online-background = ${colors.background-mod0}
+#toggle-off-foreground = #FF0000
+#toggle-on-foreground = #FF0000
+
+
+#host = 127.0.0.1
+#port = 6600
+
+#format-online =  " ⁣  <label-song>  "
+#format-offline =
+#format-stop =
+
+[bar/bar2]
+bottom = false
+monitor = ${env:MONITOR}
+width = 100%
+height = 15
+offset-x = 0%
+;offset-y = 10%
+radius = 0.0
+fixed-center = true
+
+background = ${colors.polar-night-1}
+foreground = ${colors.fg}
+
+line-size = 0
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = FuraMono Nerd Font:size=8;1
+font-1 = FontAwesome:size=8:weight=bold;1
+font-2 = FantasqueSansMono Nerd Font:size=7;1
+
+modules-left = i3
+modules-center =  spotify
+modules-right = filesystem cpu memory wlan temperature pulseaudio date
+
+tray-position =right
+tray-padding = 1
+tray-transparent = false
+tray-offset-y = 0
+tray-offset-x = -0
+tray-maxsize = 18
+tray-detached = false
+tray-background = ${colors.polar-night-2}
+
+wm-restack = i3
+
+
+
+[module/volume]
+type = internal/volume
+
+format-muted-background = ${colors.polar-night-2}
+format-volume-background = ${colors.polar-night-2}
+format-volume = "<ramp-volume>"
+label-muted = ""
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+mount-0 = /
+label-mounted =  %free%
+label-unmounted =  not mounted
+label-unmounted-foreground = ${colors.fg}
+
+[module/pkg]
+type = custom/script
+interval = 1200
+format = <label>
+format-underline = #dc322f
+label = "%output:0:30%"
+exec = .config/polybar/pkg.sh
+exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+
+
+[module/vpncheck]
+type = custom/script
+exec = pgrep openvpn
+interval = 5
+label = vpn
+format-underline = #268bd2
+format-prefix = " "
+format-prefix-foreground = #5b
+
+[module/music]
+type = custom/script
+interval = 2
+
+label = %output:0:45:...%
+exec = ~/.config/polybar/mpris.sh
+
+[module/pavolume]
+type = custom/script
+interval = 2
+label = %output%
+exec = ~/.config/polybar/pavolume.sh
+click-right = exec pavucontrol
+click-left = ~/.config/polybar/pavolume.sh --togmute
+scroll-up = ~/.config/polybar/pavolume.sh --up
+scroll-down = ~/.config/polybar/pavolume.sh --down
+
+[module/spotify]
+type = custom/script
+exec = ~/.config/polybar/spoti
+exec-if = pgrep -x spotify
+interval = 5
+
+label =  %output:0:100:%
+format-padding = 1
+format-foreground = ${colors.nord-green}
+
+click-left = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+click-middle = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+click-right = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+
+[module/title]
+type = internal/xwindow
+
+; Available tags:
+;   <label> (default)
+#format-padding = 4
+
+; Available tokens:
+;   %title%
+; Default: %title%
+label = %title%
+label-maxlen = 100

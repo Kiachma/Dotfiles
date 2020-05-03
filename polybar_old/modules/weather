@@ -1,0 +1,7 @@
+[module/weather]
+type = custom/script
+interval = 10
+label-font = 3
+format = <label>
+format-prefix-foreground = ${colors.foreground}
+exec = ~/.config/polybar/weather

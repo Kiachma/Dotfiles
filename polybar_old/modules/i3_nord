@@ -1,0 +1,32 @@
+[module/i3]
+type = internal/i3
+ws-icon-0 = "1:web;"
+ws-icon-1 = "2:term;"
+ws-icon-2 = "3:code;"
+ws-icon-3 = "4:text;"
+ws-icon-4 = "5:doc;"
+ws-icon-5 = "6:thunar;"
+ws-icon-6 = "7:music;"
+ws-icon-7 = "8:social;"
+ws-icon-8 = "9:conf;"
+ws-icon-9 = "10:rand;"
+
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+label-focused = %icon%
+label-focused-foreground = ${colors.nord-yellow}
+label-focused-padding = 1
+
+label-unfocused = %icon%
+label-unfocused-foreground = ${colors.nord-blue}
+label-unfocused-padding = 1
+
+label-visible =
+label-visible-foreground = ${self.label-focused-foreground}
+label-visible-padding = ${self.label-focused-padding}
+
+label-urgent = %icon%
+label-urgent-foreground = ${colors.nord-red}
+label-urgent-padding = ${self.label-focused-padding}

@@ -1,12 +1,12 @@
 #!/usr/bin/env sh
 
+## Add this to your wm startup file.
+
 # Terminate already running bar instances
 killall -q polybar
 
 # Wait until the processes have been shut down
-while pgrep -x polybar >/dev/null; do sleep 1; done
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
-MONITOR=DVI-I-1 polybar bar1 &
-MONITOR=DVI-I-1 polybar bar2
-&echo "Bars launched..."
+MONITOR=DVI-D-0 polybar -c ~/.config/polybar/config.ini main &

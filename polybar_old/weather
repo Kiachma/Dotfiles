@@ -12,7 +12,7 @@ weather = json.loads(resp.text)
 #metar = weather["aviationProducts"]["meteorologicalAerodromeReport"][-1]["metarText"]
 metar = weather["raw"]
 #if cond == "Standby":
-print( (metar))
+print("%%{F#A3BE8C}%s" % (metar))
 #elif cond == "Unrestricted":
 #	print("%%{F#99cc99}%s" % (metar))
 #else:
