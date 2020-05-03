@@ -85,8 +85,9 @@ bindsym $mod+Shift+c kill
 set $bg-color #2d2d2d
 set $text-color #f3f4f5
 # start dmenu (a program launcher)
-bindsym $mod+p exec rofi  -theme ~/.local/share/rofi/themes/base16-tomorrow-night -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -font "Hack 18"
-bindsym $mod+o exec  ROFI_PASS_CONFIG="~/.config/rofi-pass/conf" rofi-pass  -theme ~/.local/share/rofi/themes/base16-tomorrow-night -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -font "Hack 18"
+bindsym $mod+p exec i3-dmenu-desktop
+#bindsym $mod+p exec rofi  -theme ~/.local/share/rofi/themes/base16-nord -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -font "Hack 18"
+#bindsym $mod+o exec  ROFI_PASS_CONFIG="~/.config/rofi-pass/conf" rofi-pass  -theme ~/.local/share/rofi/themes/base16-nord -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -font "Hack 18"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -183,10 +184,11 @@ assign [class="Firefox"] $tag1
 assign [class="subl"] $tag3
 assign [class="Disc"] $tag8
 assign [class="Franz"] $tag8
+assign [class="Skype"] $tag8
 #exec bindings
 bindsym $mod+q exec firefox
 bindsym $mod+s exec subl
-bindsym $mod+d exec thunar
+bindsym $mod+d exec nautilus
 bindsym $mod+t exec slock
 bindsym Shift+Print  exec gnome-screenshot --window
 bindsym Control+Print  exec gnome-screenshot --area

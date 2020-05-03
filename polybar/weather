@@ -3,15 +3,16 @@
 import urllib.request, json, requests
 
 
-resp = requests.get(url="http://www.talon.kiachma.webfactional.com/weather/ENTO")
+#resp = requests.get(url="http://www.talon.kiachma.webfactional.com/weather/ENTO")
+#weather = json.loads(resp.text)
+headers = {'Authorization':'zxkqGwCwZjMOIzqTpq0gcZCUf4gw4qQiH-K0PZQqOIo'}
+resp = requests.get(url="https://avwx.rest/api/metar/ENGM",headers=headers)
 weather = json.loads(resp.text)
-#resp = requests.get(url="http://www.talon.kiachma.webfactional.com/condition")
 #cond = json.loads(resp.text)
-
-metar = weather["aviationProducts"]["meteorologicalAerodromeReport"][-1]["metarText"]
-
+#metar = weather["aviationProducts"]["meteorologicalAerodromeReport"][-1]["metarText"]
+metar = weather["raw"]
 #if cond == "Standby":
-print("%%{F#99cc99}%s" % (metar))
+print( (metar))
 #elif cond == "Unrestricted":
 #	print("%%{F#99cc99}%s" % (metar))
 #else:
