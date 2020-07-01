@@ -54,7 +54,7 @@ PURE_PROMPT_SYMBOL="❯"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colorize git-flow-avh node npm zsh-syntax-highlighting)
+plugins=(git colorize git-flow-avh node npm docker docker-compose dnf firewalld history vim-interaction vscode zsh-syntax-highlighting)
 
 # User configuration
 # alias zshconfig="mate ~/.zshrc"
@@ -62,8 +62,8 @@ plugins=(git colorize git-flow-avh node npm zsh-syntax-highlighting)
 alias ls='ls --color=auto'
 alias albin='ssh eaura@albin.abo.fi'
 alias home="cd ~/"
-alias upgrade='sudo apt update && sudo apt upgrade'
-alias install='sudo apt-get install'
+alias upgrade='sudo dnf update'
+alias install='sudo dnf install'
 alias uninstall='sudo apt-get remove'
 alias poweroff='sudo poweroff'
 alias reboot='sudo reboot'
@@ -139,22 +139,20 @@ source $ZSH/oh-my-zsh.sh
 
 
 export CHROME_BIN=/usr/bin/google-chrome-beta
-export BROWSER=firefox-developer
+export BROWSER=firefox
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd -Dsun.java2d.xrender=true'
-export EDITOR=nano
-export VISUAL=nano
+export EDITOR=vim
+export VISUAL=vim
 GMON_OUT_PREFIX="gmon".`uname -n`
 export GMON_OUT_PREFIX
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export GPGKEY=71EA5CB321CB60C1
-export BOSE_ADDR=10.0.0.164
 
 export FIREFOX_BIN=/usr/bin/firefox
 # Customize to your needs...
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/bin:/usr/bin:/home/eaura/.bin:/home/eaura/.local/bin
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+
 
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
@@ -162,31 +160,9 @@ fpath=( "$HOME/.zfunctions" $fpath )
 
 [ -n "$XTERM_VERSION" ] && transset-df --id "$WINDOWID" >/dev/null
 
-# ROS
-lunar() {
- source /opt/ros/lunar/setup.zsh
- source $HOME/catkin_ws/devel/setup.zsh
-  export PYTHONPATH=/opt/ros/lunar/lib/python2.7/site-packages:$PYTHONPATH
-  export PKG_CONFIG_PATH="/opt/ros/lunar/lib/pkgconfig:$PKG_CONFIG_PATH"
-  # Optionally, you can set:
-  #export ROS_PACKAGE_PATH=/path/to/your/package/path:$ROS_PACKAGE_PATH
-
-  # Useful aliases
-  alias catkin_make="catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python2 -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so"
-
-  # If you use Gazebo:
-  source /usr/share/gazebo/setup.sh
-}
-
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH=$PATH:/opt/netbeans/bin/
-
-export PATH="/home/eaura/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
