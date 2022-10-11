@@ -9,7 +9,9 @@ URxvt*transparent:       false
 URxvt*depth: 32
 URxvt.background: [70]#393939
 
-URxvt.font: xft:Fira Mono:pixelsize=12
+!URxvt.font: xft:Fira Mono:pixelsize=12
+!URxvt.font: xft:Fira Mono for Powerline:pixelsize=12
+URxvt.font: xft:JetBrainsMono Nerd Font Mono:pixelsize=12
 URxvt.letterSpace: 0
 
 *antialias:  true

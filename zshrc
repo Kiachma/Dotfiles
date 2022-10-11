@@ -5,7 +5,7 @@ export ZSH=/home/eaura/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="theunraveler"
+ZSH_THEME="spaceship"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -43,18 +43,18 @@ ZSH_THEME="theunraveler"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=~/.zsh
+ZSH_CUSTOM=$ZSH/custom
 
 
 # optionally define some options
 PURE_PROMPT_SYMBOL="❯"
-
-
+TERMINAL=alacritty 
+TERM=xterm 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colorize git-flow-avh node npm docker docker-compose dnf firewalld history vim-interaction vscode zsh-syntax-highlighting)
+plugins=(git colorize git-flow-avh node npm docker docker-compose dnf firewalld history vim-interaction vscode zsh-autosuggestions zsh-syntax-highlighting)
 
 # User configuration
 # alias zshconfig="mate ~/.zshrc"
@@ -62,7 +62,7 @@ plugins=(git colorize git-flow-avh node npm docker docker-compose dnf firewalld 
 alias ls='ls --color=auto'
 alias albin='ssh eaura@albin.abo.fi'
 alias home="cd ~/"
-alias upgrade='sudo dnf update'
+alias upgrade='sudo dnf update && sudo flatpak update && sudo snap refresh'
 alias install='sudo dnf install'
 alias uninstall='sudo apt-get remove'
 alias poweroff='sudo poweroff'
@@ -75,7 +75,7 @@ alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias help='tldr'
 
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
-
+export JAVA_HOME=$(dirname $(dirname $(readlink $(readlink $(which javac)))))
 extract () {
     if [ -f $1 ] ; then
       case $1 in
@@ -121,6 +121,7 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
+
 # You may need to manually set your language environment
  export LANG=sv_FI.UTF-8
 
@@ -156,6 +157,7 @@ export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platf
 
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/softa/apache-maven-3.2.5/bin" 
 fpath=( "$HOME/.zfunctions" $fpath )
 
 [ -n "$XTERM_VERSION" ] && transset-df --id "$WINDOWID" >/dev/null
@@ -165,4 +167,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 
+
+export ESI_HOME="/opt/EAD/ESI_HOME"
+export ENA_HOME="/opt/EAD/ENA_HOME"
+export PATH="$PATH:$HOME/bin" # Add RVM to PATH for scripting

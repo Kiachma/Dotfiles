@@ -9,4 +9,12 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
-MONITOR=DVI-D-0 polybar -c ~/.config/polybar/config.ini main &
+MONITOR=eDP-1-1 polybar -c ~/.config/polybar/config.ini main &
+MONITOR=DP-1-1-1-8 polybar -c ~/.config/polybar/config.ini main &
+MONITOR=DP-1-1-1-1 polybar -c ~/.config/polybar/config.ini main &
+
+#MONITOR=DP-1-1-3 polybar -c ~/.config/polybar/config.ini main &
+#MONITOR=DP-1-1-1 polybar -c ~/.config/polybar/config.ini main &
+
+#MONITOR=DP-1-1-8 polybar -c ~/.config/polybar/config.ini main &
+#MONITOR=DP-1-1-1 polybar -c ~/.config/polybar/config.ini main &
