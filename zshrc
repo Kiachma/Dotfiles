@@ -5,7 +5,7 @@ export ZSH=/home/eaura/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="spaceship"
+ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -54,7 +54,7 @@ TERM=xterm
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colorize git-flow-avh node npm docker docker-compose dnf firewalld history vim-interaction vscode zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git colorize git-flow-avh node npm docker docker-compose dnf firewalld history vim-interaction vscode zsh-autosuggestions zsh-syntax-highlighting jira aliases sublime)
 
 # User configuration
 # alias zshconfig="mate ~/.zshrc"

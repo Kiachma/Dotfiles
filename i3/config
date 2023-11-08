@@ -90,6 +90,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec env XCURSOR_SIZE=24 alacritty
+#bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+c kill
@@ -192,6 +193,7 @@ bindsym $mod+Ctrl+Right move workspace to output right
 #Rules
 assign [class="Chromium"] $tag0
 assign [class="Nautilus"] $tag4
+assign [class="Thunar"] $tag4
 assign [class="thunar"] $tag4
 for_window [class="Spotify"] move to workspace $tag7
 assign [class="skype"] $tag8
@@ -220,14 +222,14 @@ for_window [class="Ardour-6.9.0"] floating disable
 
 
 #exec bindings
-bindsym $mod+q exec /home/eaura/.local/bin/firefox-dev -start-debugger-server
+bindsym $mod+q exec firefox
 bindsym $mod+s exec subl
-bindsym $mod+d exec nautilus
+bindsym $mod+d exec thunar
+bindsym Print exec /home/eaura/.bin/zipline.sh
 
 bindsym $mod+Shift+h exec hemswx
 bindsym Shift+Print  exec gnome-screenshot --window
 bindsym Control+Print  exec gnome-screenshot --area
-bindsym Print  exec gnome-screenshot
 
 #Audio keys
 #bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 3%-
@@ -269,12 +271,13 @@ bindsym $mod+Control+l exec i3lock
 #Load on startup
 exec /home/eaura/.local/bin/firefox-dev 
 exec flatpak run com.spotify.Client
+exec flatpak run flatpak run com.slack.Slack
 exec redshift-gtk
 exec thuderbird
 exec singlebox
 exec teams
 exec singlebox
-exec flatpak run com.skype.Client
+exec skypeforlinux
 exec code
 exec nitrogen --restore &
 exec "feh --bg-scale /home/eaura/Google\ Drive/wallpaper.jpg"
@@ -342,7 +345,7 @@ for_window [window_role="task_dialog"] floating enable
 #		background $base00
 #        separator  $base00
 #        statusline $base04
-#		# State     Border  BG      Text
+#		# State     Border  BG      Tex
 #        focused_workspace   $base00 $base00 $base0D
 #        active_workspace    $base00 $base00 $base0A
 #        inactive_workspace  $base00 $base00 $base04
@@ -369,4 +372,4 @@ client.background       $base07
 
 for_window [class=".*"] border pixel 2
 
-gaps inner   5
+#gaps inner   5
